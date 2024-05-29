@@ -5,6 +5,7 @@ from pathlib import Path
 import tqdm
 
 import src.extract as e
+import src.process as p
 
 
 def _compute_frequencies(args):
@@ -26,6 +27,9 @@ def _compute_rawfreqs(args):
 							args.pos,
 							args.output_folder)
 
+
+def _linearize_itwac(args):
+	p.linearize(args.input_files_list, args.output_folder)
 
 if __name__ == "__main__":
 
@@ -54,6 +58,7 @@ if __name__ == "__main__":
 							help="path to file containing list of studies prefixes")
 	parser_frequencies.set_defaults(func=_compute_frequencies)
 
+
 	parser_rawfreqs = subparsers.add_parser('frequencies',
 											formatter_class=argparse.ArgumentDefaultsHelpFormatter,
 											parents=[parent_parser],
@@ -70,6 +75,20 @@ if __name__ == "__main__":
 								 help="part of speech tag")
 	parser_rawfreqs.set_defaults(func=_compute_rawfreqs)
 
+
+	parser_linear = subparsers.add_parser('linearize',
+									   	formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+										parents=[parent_parser],
+										description='linearize ITWAC',
+										help='linearize ITWAC')
+	parser_linear.add_argument("-i", "--input-files-list",
+								 default="files containing ITWAC corpus", nargs="+",
+								 type=pathlib.Path,
+								 help="path to file containing ITWAC corpus")
+	parser_linear.add_argument("-o", "--output-folder", default="data_sample/output_rawfreqs/",
+								 type=pathlib.Path,
+								 help="path to output folder")
+	parser_linear.set_defaults(func=_linearize_itwac)
 
 
 	args = root_parser.parse_args()
