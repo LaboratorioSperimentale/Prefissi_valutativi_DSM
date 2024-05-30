@@ -13,7 +13,7 @@ def _compute_frequencies(args):
 	prefixes = set()
 	with open(args.prefixes, encoding="utf-8") as fin:
 		for line in fin:
-			prefixes.add(line.strip().split())
+			prefixes.add(line.strip())
 
 
 	e.compute_derivates_frequencies(args.input_files_list,
