@@ -29,7 +29,7 @@ def _compute_rawfreqs(args):
 
 
 def _linearize_itwac(args):
-	p.linearize(args.input_files_list, args.output_folder)
+	p.linearize_itwac(args.input_files_list, args.output_folder)
 
 if __name__ == "__main__":
 

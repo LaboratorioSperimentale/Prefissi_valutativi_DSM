@@ -1,4 +1,5 @@
 import tqdm
+import src.reader as r
 
 def linearize_itwac(input_files, output_folder):
 
