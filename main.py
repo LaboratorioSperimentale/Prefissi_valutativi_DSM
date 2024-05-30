@@ -59,7 +59,7 @@ if __name__ == "__main__":
 	parser_frequencies.set_defaults(func=_compute_frequencies)
 
 
-	parser_rawfreqs = subparsers.add_parser('frequencies',
+	parser_rawfreqs = subparsers.add_parser('raw_frequencies',
 											formatter_class=argparse.ArgumentDefaultsHelpFormatter,
 											parents=[parent_parser],
 											description='compute frequency of derivatives and bases',
